@@ -1,0 +1,23 @@
+{
+  "name": "jacknife",
+  "version": "0.0.1",
+  "authors": [
+    "Chris Yeo <yeochinyi@gmail.com>"
+  ],
+  "description": "one-liner util for javascript using _",
+  "main": "jacknife.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jacknife"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
