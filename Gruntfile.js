@@ -7,7 +7,7 @@
             jshint: {
                 all: ['Gruntfile.js', 'src/*.js', 'test/*.js']
             },
-            test: {
+            karma: {
                 unit: {
                     configFile: 'karma.conf.js'
                 },

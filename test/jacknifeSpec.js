@@ -67,6 +67,16 @@ describe('Util Tests ', function() {
             mb(null);
             expect(v).toEqual('yeah');
         });
+        
+        it('objMap', function() {
+            var array = [
+                     {id:'x', desc:'a'},
+                     {id:'y', desc:'b'},
+                     {id:'z', desc:'c'}
+                     ];
+            var objMap = jk.objMap(array,'id');
+            expect(objMap['x'].desc).toEqual('a');
+        });
 
 
     });
