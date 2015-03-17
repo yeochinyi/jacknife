@@ -5,7 +5,7 @@
     "Chris Yeo <yeochinyi@gmail.com>"
   ],
   "description": "one-liner util for javascript using _",
-  "main": "jacknife.js",
+  "main": "src/jacknife.js",
   "moduleType": [
     "globals"
   ],
@@ -14,7 +14,6 @@
   ],
   "license": "MIT",
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
     "test",
