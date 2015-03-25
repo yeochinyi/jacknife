@@ -1,6 +1,20 @@
 'use strict';
 
 describe('Util Tests ', function() {
+	
+         var inv = [{
+             apples: 0,
+             oranges: 144,
+             eggs: 36
+         }, {
+             apples: 240,
+             oranges: 54,
+             eggs: 12
+         }, {
+             apples: 24,
+             oranges: 12,
+             eggs: 42
+         }];
 
     describe('jacknife', function() {
         // it('mapWith', function() {
@@ -10,19 +24,7 @@ describe('Util Tests ', function() {
         //     //var safeSquareAll = jk.mapWith(function (n) { return n * n }); 			
         //     expect(safeSquareAll([1, null, 3, 5])).toEqual([1, null, 9, 25]);
         //     //expect(safeSquareAll([1, 2, 3])).toEqual([1, 4, 9]);
-        //     var inventories = [{
-        //         apples: 0,
-        //         oranges: 144,
-        //         eggs: 36
-        //     }, {
-        //         apples: 240,
-        //         oranges: 54,
-        //         eggs: 12
-        //     }, {
-        //         apples: 24,
-        //         oranges: 12,
-        //         eggs: 42
-        //     }];
+
 
         //     expect(jk.mapWith(jk.getWith('oranges'))(inventories)).toEqual([144, 54, 12]);
 
@@ -68,16 +70,58 @@ describe('Util Tests ', function() {
             expect(v).toEqual('yeah');
         });
         
-        it('objMap', function() {
-            var array = [
-                     {id:'x', desc:'a'},
-                     {id:'y', desc:'b'},
-                     {id:'z', desc:'c'}
-                     ];
-            var objMap = jk.objMap(array,'id');
-            expect(objMap['x'].desc).toEqual('a');
-        });
+        it('deepPredicate', function() {
 
+        	var a = {
+        			id :1
+        	};
+        	
+        	var b = {
+        			id :2
+        	};
+        	
+        	var c = {
+        			id :3
+        	};
+        	
+            var aObj = {obj:a};
+            var bObj = {obj:b};
+            var cObj = {obj:c};
+        	
+        	var objs = [aObj,bObj,cObj];        	
+        	
+//        	var find = function(col, key, value) {
+//        		var x;
+//        		for(x in col){
+//        			var obj = col[x];
+//        			if(obj[key] === value){
+//        				return obj;
+//        			}
+//        		}            	
+//            }        	
+//        	var f = find([a,b,c], 'id', 2);        	
+//        	expect(f).toEqual(b);
+        	
+        	var find = function(col, fn) {
+        		var x;
+        		for(x in col){
+        			var obj = col[x];
+        			if(fn(obj)){
+        				return obj;
+        			}
+        		}              		
+            }        	
+        	var f = find([a,b,c], function(o){
+        		return o.id === 2;
+        	});        	
+        	expect(f).toEqual(b);        	        	
+        	var dp = jk.deepPredicate(find)(objs,'obj.id',2);
+        	expect(dp).toEqual(bObj);
+        	
+            var dp = jk.deepPredicate(_.find)(objs,'obj.id',2);
+            expect(dp).toEqual(bObj);
+        });
+        
 
     });
 });

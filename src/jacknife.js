@@ -141,12 +141,22 @@
 			};
 		};
 	};
-
-	function objMap(array,field){
-    	return  _.reduce(array,function(memo,o){
-    		memo[o[field]] = o;
-    		return memo;
-    	},{});
+	
+	function deepPredicate(fn){
+		return function(collection, deepPath, value){
+			return fn(collection, function(o){
+				var x;
+				var splitted = deepPath.split('.');
+				for(x in splitted){
+					var path = splitted[x];
+					o = o[path];
+//					if(o === undefined){
+//						break;
+//					}					
+				}
+				return o === value;
+			});
+		}
 	}
 
 
@@ -161,7 +171,7 @@
 			callRight: callRight,
 			unary: unary,
 			tap: tap,
-			objMap:objMap
+			deepPredicate: deepPredicate
 	};
 
 	// Exports and sundries
