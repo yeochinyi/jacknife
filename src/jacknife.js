@@ -158,6 +158,20 @@
 			});
 		}
 	}
+	
+	function deepProp(fn){
+		return function(collection, deepPath){
+			return fn(collection, function(o){
+				var x;
+				var splitted = deepPath.split('.');
+				for(x in splitted){
+					var path = splitted[x];
+					o = o[path];
+				}
+				return o;
+			});
+		}
+	}	
 
 
 	// here's our export object
@@ -171,7 +185,8 @@
 			callRight: callRight,
 			unary: unary,
 			tap: tap,
-			deepPredicate: deepPredicate
+			deepPredicate: deepPredicate,
+			deepProp:deepProp
 	};
 
 	// Exports and sundries
