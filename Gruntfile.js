@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    module.exports = function (grunt) {
+    module.exports = function(grunt) {
         require('load-grunt-tasks')(grunt);
         grunt.initConfig({
             jshint: {
@@ -10,9 +10,6 @@
             karma: {
                 unit: {
                     configFile: 'karma.conf.js'
-                },
-                'unit.min': {
-                    configFile: 'karma.min.conf.js'
                 },
                 autotest: {
                     configFile: 'karma.conf.js',

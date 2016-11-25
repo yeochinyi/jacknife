@@ -29,6 +29,12 @@ module.exports = function(config) {
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
 
+        plugins: [
+            'karma-phantomjs-launcher',
+            //'karma-chrome-launcher',
+            'karma-jasmine'
+        ],
+
         // Start these browsers, currently available:
         // - Chrome
         // - ChromeCanary
@@ -44,7 +50,12 @@ module.exports = function(config) {
         // if true, it capture browsers, run tests and exit
         singleRun: false,
 
-        reporters: ['progress']
+        reporters: ['progress'],
+
+    phantomjsLauncher: {
+      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+      exitOnResourceError: true
+    }        
 
     });
 };
